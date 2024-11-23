@@ -1,7 +1,13 @@
-/* USER CODE BEGIN 2 */
-while (1)
-{
-  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-  HAL_Delay(500);
+void StartTask1(void *argument) {
+	for(;;) {
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); // Светодиод 1
+		vTaskDelay(500 / portTICK_PERIOD_MS);
+	}
 }
-/* USER CODE END 2 */
+
+void StartTask2(void *argument) {
+	for(;;) {
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_14); // Светодиод 2
+		vTaskDelay(1000 / portTICK_PERIOD_MS);
+	}
+}
